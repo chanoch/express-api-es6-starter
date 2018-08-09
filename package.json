@@ -1,6 +1,6 @@
 {
   "name": "express-api-es6-starter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Express API ES6 Starter",
   "scripts": {
     "start": "node dist",
@@ -11,14 +11,11 @@
     "codecov": "cat coverage/*/lcov.info | codecov",
     "seed": "knex seed:run --knexfile src/knexfile.js",
     "build": "rimraf dist && babel src -D --out-dir dist",
-    "migrate": "knex migrate:latest --knexfile src/knexfile.js",
-    "rollback": "knex migrate:rollback --knexfile src/knexfile.js",
-    "make:seeder": "knex seed:make --knexfile src/knexfile.js",
-    "make:migration": "knex migrate:make --knexfile src/knexfile.js",
     "test": "NODE_ENV=test mocha --exit --recursive --require babel-register test",
     "prettify": "prettier --single-quote --print-width 120 --write \"src/**/*.js\" \"test/**/*.js\"",
-    "start:dev": "nodemon --watch .env --watch src --exec babel-node src --source-maps",
-    "test:coverage": "NODE_ENV=test nyc --require babel-register --reporter lcov --reporter text mocha --exit --recursive test"
+    "dev": "nodemon --watch .env --watch src --exec babel-node src --source-maps",
+    "test:coverage": "NODE_ENV=test nyc --require babel-register --reporter lcov --reporter text mocha --exit --recursive test",
+    "release": "bump --tag --prompt"
   },
   "lint-staged": {
     "*.js": [
@@ -38,7 +35,6 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "bookshelf": "^0.13.3",
     "boom": "^7.2.0",
     "compression": "^1.7.3",
     "cors": "^2.8.3",
@@ -47,19 +43,21 @@
     "helmet": "^3.13.0",
     "http-status-codes": "^1.1.6",
     "joi": "^13.5.2",
-    "knex": "^0.15.2",
-    "lodash": "^4.17.10",
     "morgan": "^1.9.0",
-    "pg": "^7.4.3",
     "raven": "^2.6.3",
     "serve-favicon": "^2.5.0",
+    "superagent": "^3.8.3",
     "swagger-jsdoc": "^3.0.2",
     "swagger-ui-dist": "^3.18.0",
+    "version-bump-prompt": "^4.1.0",
     "winston": "^3.0.0",
-    "winston-daily-rotate-file": "^3.3.0"
+    "winston-daily-rotate-file": "^3.3.0",
+    "winston-papertrail": "^1.0.5"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.24.1",
     "chai": "^4.0.0",
@@ -68,6 +66,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
     "husky": "^0.14.3",
+    "jest": "^23.4.2",
     "lint-staged": "^7.2.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.3",
