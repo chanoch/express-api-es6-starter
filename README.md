@@ -5,14 +5,12 @@
 [![Build Status](https://travis-ci.org/mesaugat/express-api-es6-starter.svg?branch=master)](https://travis-ci.org/mesaugat/express-api-es6-starter)
 [![Codecov](https://codecov.io/gh/mesaugat/express-api-es6-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/mesaugat/express-api-es6-starter)
 
-Starter application for building APIs with [Express.js](http://expressjs.com/) - **[DEMO](https://express-api-es6-starter.herokuapp.com/api-docs/)**
+Starter application for building APIs with [Express.js](http://expressjs.com/)
 
 Comes with:
 
 * [ES6](http://babeljs.io/learn-es2015/) features/modules
 * ES7 [async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)/[await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await)
-* [Bookshelf](http://bookshelfjs.org/) ORM and [Knex](http://knexjs.org/) migrations
-* PostgreSQL (default) with support for MySQL and SQLite
 * API documentation using [swagger-ui-dist](https://www.npmjs.com/package/swagger-ui) and [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc)
 * [ESLint](http://eslint.org/) for code linting
 * Request validation using [Joi](https://www.npmjs.com/package/joi)
@@ -21,48 +19,35 @@ Comes with:
 * Logging using [winston](https://www.npmjs.com/package/winston)
 * Error reporting using [raven](http://npmjs.com/package/raven)
 * Tests using [mocha](https://www.npmjs.com/package/mocha), [supertest](https://www.npmjs.com/package/supertest) and [chai](https://www.npmjs.com/package/chai)
+  and jest
+
+* husky - git hooks support to run validation prior to commit
+* raven - sentry exception saas
+* codecov - for code coverage reports
+* nyc - istanbul cli for test coverage ??
 
 ---
 
 ## Prerequisites
 
 * [Node.js](https://yarnpkg.com/en/docs/install) - 8.9.0 or above
-* [Yarn](https://yarnpkg.com/en/docs/install) - 1.7.0 or above
 * [NPM](https://docs.npmjs.com/getting-started/installing-node) - 5.5.1 or above
-* [PostgreSQL](https://www.postgresql.org/download/) - 10.0 or above
 
 ## Setup
 
 Clone the repository, install the dependencies and get started right away.
 
-    $ git clone git@github.com:mesaugat/express-api-es6-starter.git <application-name>
+    $ git clone git@github.com:chanoch/express-api-es6-starter.git <application-name>
     $ cd <application-name>
     $ rm -rf .git
     $ yarn   # or npm install
 
-Make a copy of `.env.example` as `.env` and update your application details and database credentials. Now, run the migrations and seed the database.
-
-    $ yarn migrate
-    $ yarn seed
-
 Finally, start the application.
 
-    $ yarn start:dev (For development)
+    $ npm run dev (For development)
     $ yarn start (For production)
 
-Navigate to http://localhost:8848/api-docs/ to verify installation.
-
-## Creating new Migrations and Seeds
-
-These are the commands to create a new migration and corresponding seed file.
-
-    $ yarn make:migration <name>
-    $ yarn make:seeder <name>
-
-Example,
-
-    $ yarn make:migration create_tags_table
-    $ yarn make:seeder 02_insert_tags
+Navigate to http://localhost:{PORT}/api-docs/ to verify installation.
 
 ## Setup Using Docker
 
@@ -82,17 +67,6 @@ Bring down stack,
 
     $ docker-compose down
 
-## Using MySQL instead of PostgreSQL
-
-Install the [mysql](https://www.npmjs.com/package/mysql) driver first. Update these lines `DB_CLIENT='pg'` and `DB_PORT='5432'` in your .env file to `DB_CLIENT='mysql'` and `DB_PORT='3306'` respectively.
-
-You can remove the [pg](https://www.npmjs.com/package/pg) driver if you like to.
-
-    $ yarn add mysql
-    $ yarn remove pg
-
-That's it, you are ready to roll.
-
 ## Tests
 
 To run the tests you need to create a separate test database. Don't forget to update your `.env` file to include the name of the test database and run the migrations.
@@ -103,10 +77,6 @@ To run the tests you need to create a separate test database. Don't forget to up
 Run tests with coverage.
 
     $ yarn test:coverage
-
-## Why 8848?
-
-Because the highest point in the world is [8848 metres](https://en.wikipedia.org/wiki/Mount_Everest).
 
 ## Contributing
 

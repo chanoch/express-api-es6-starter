@@ -1,5 +1,4 @@
 import './env';
-import './db';
 import fs from 'fs';
 import cors from 'cors';
 import path from 'path';
@@ -11,7 +10,6 @@ import routes from './routes';
 import favicon from 'serve-favicon';
 import bodyParser from 'body-parser';
 import compression from 'compression';
-import json from './middlewares/json';
 import logger, { logStream } from './utils/logger';
 import * as errorHandler from './middlewares/errorHandler';
 
@@ -43,7 +41,6 @@ app.use(compression());
 app.use(morgan('tiny', { stream: logStream }));
 app.use(bodyParser.json());
 app.use(errorHandler.bodyParser);
-app.use(json);
 
 // API Routes
 app.use('/api', routes);
